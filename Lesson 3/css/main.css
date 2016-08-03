@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: Arial;
-  background-color: #AE501D; }
+  background-color: #346eae; }
 
 h1 {
   color: #FF8442;
@@ -33,7 +33,6 @@ div.main {
       top: 0;
       left: 60px;
       width: 100px;
-      -webkit-transform: translate(0, -100%);
-              transform: translate(0, -100%);
+      transform: translate(0, -100%);
       -webkit-filter: invert(1);
               filter: invert(1); }
