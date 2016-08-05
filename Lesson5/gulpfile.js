@@ -8,6 +8,7 @@ var eslint = require('gulp-eslint');
 var jasmine = require('gulp-jasmine-phantom');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var gzip = require('gulp-gzip');
 
 gulp.task('default', ['copy-html', 'copy-images', 'styles', 'lint', 'scripts'], function() {
 	gulp.watch('sass/**/*.scss', ['styles']);
@@ -38,6 +39,7 @@ gulp.task('scripts-dist', function() {
 	gulp.src('js/**/*.js')
 		.pipe(concat('all.js'))
 		.pipe(uglify())
+		.pipe(gzip())
 		.pipe(gulp.dest('dist/js'));
 });
 
