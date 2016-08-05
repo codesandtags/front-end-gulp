@@ -9,6 +9,7 @@ var jasmine = require('gulp-jasmine-phantom');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var gzip = require('gulp-gzip');
+var babel = require('gulp-babel');
 
 gulp.task('default', ['copy-html', 'copy-images', 'styles', 'lint', 'scripts'], function() {
 	gulp.watch('sass/**/*.scss', ['styles']);
@@ -31,12 +32,16 @@ gulp.task('dist', [
 
 gulp.task('scripts', function() {
 	gulp.src('js/**/*.js')
+		.pipe(babel({
+			plugins: ['transform-runtime']
+		}))
 		.pipe(concat('all.js'))
 		.pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('scripts-dist', function() {
 	gulp.src('js/**/*.js')
+		.pipe(babel())
 		.pipe(concat('all.js'))
 		.pipe(uglify())
 		.pipe(gzip())
