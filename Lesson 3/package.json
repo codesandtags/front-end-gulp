@@ -6,15 +6,25 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {},
+  "dependencies": {
+    "git-validate": "^2.1.4"
+  },
   "devDependencies": {
     "browser-sync": "^2.14.0",
+    "eslint": "^3.2.2",
+    "eslint-config-google": "^0.6.0",
     "gulp-autoprefixer": "^3.1.0",
+    "gulp-eslint": "^3.0.1",
     "gulp-sass": "^2.3.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint js",
+    "validate": "npm ls"
   },
   "author": "codesandtags",
-  "license": "ISC"
+  "license": "ISC",
+  "pre-commit": [
+    "lint",
+    "validate"
+  ]
 }
